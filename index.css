@@ -45,11 +45,21 @@ body {
 
     text-align: center;
     padding: 20px;
+    transition: box-shadow 0.5s ease;
+
 }
 .content:hover {
     box-shadow: 0 0 25px 8px rgba(255,255,255,0.7);
-     transition: box-shadow 0.3s ease;
-     transform: scale(1.01);
+    transform: scale(1.01);
+
+}
+
+.socials {
+  display: flex;           /* робимо контейнер flex */
+    flex-direction: row;     /* елементи в рядок */
+    justify-content: center; /* центр горизонтально */
+    align-items: center;     /* центр вертикально */
+    gap: 20px;               /* відстань між іконками */
 }
 
 .socials img {
