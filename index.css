@@ -36,7 +36,7 @@ width: min(90vw, 320px);
     justify-content: center;
     align-items: center;
 
-    box-shadow: 0 0 15px 3px rgba(255,255,255,0.4);
+     box-shadow: 0 0 15px 3px rgba(255,255,255,0.4);
     animation: glow 2s infinite alternate;
     transition: box-shadow 0.5s ease, transform 0.3s ease;
 }
@@ -80,6 +80,7 @@ width: min(90vw, 320px);
         box-shadow: 0 0 20px rgba(255,255,255,0.6);
     }
 }
+
 
 
 
