@@ -45,13 +45,15 @@ body {
     transform: scale(1.015);
 }
 .profile-photo {
-    width: 100px;          /* ширина фото */
-    height: 100px;         /* висота */
-    border-radius: 50%;    /* кругле */
-    object-fit: cover;     /* обрізає, щоб не спотворювалося */
-    margin-bottom: 15px;   /* відступ від тексту */
-    border: 2px solid white; /* опціонально біла обводка */
+    width: 100px;           /* фіксована ширина */
+    height: 100px;          /* фіксована висота */
+    border-radius: 50%;     /* робимо круглим */
+    object-fit: cover;      /* обрізає фото по колу, не спотворює */
+    margin-bottom: 15px;    /* відступ від тексту */
+    border: 2px solid white; /* обводка */
+    display: block;          /* щоб не “літало” */
 }
+
 /* Соцмережі */
 .socials {
     display: flex;
@@ -94,6 +96,7 @@ body {
         box-shadow: 0 0 20px rgba(255,255,255,0.6);
     }
 }
+
 
 
 
