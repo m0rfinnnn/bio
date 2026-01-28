@@ -44,6 +44,14 @@ body {
     box-shadow: 0 0 18px 4px rgba(255,255,255,0.55);
     transform: scale(1.015);
 }
+.profile-photo {
+    width: 100px;          /* ширина фото */
+    height: 100px;         /* висота */
+    border-radius: 50%;    /* кругле */
+    object-fit: cover;     /* обрізає, щоб не спотворювалося */
+    margin-bottom: 15px;   /* відступ від тексту */
+    border: 2px solid white; /* опціонально біла обводка */
+}
 /* Соцмережі */
 .socials {
     display: flex;
@@ -86,6 +94,7 @@ body {
         box-shadow: 0 0 20px rgba(255,255,255,0.6);
     }
 }
+
 
 
 
