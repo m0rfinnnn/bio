@@ -22,7 +22,7 @@ body {
     display: flex;
     align-items: baseline; /* красиво вирівнює текст */
     gap: 8px;     
-    line-height: 0.9; і/* відстань між ними */
+    line-height: 0.5; і/* відстань між ними */
 }
 
 /* Основний блок */
@@ -99,6 +99,7 @@ body {
         box-shadow: 0 0 20px 4px rgba(255,255,255,0.4);
     }
 }
+
 
 
 
