@@ -26,7 +26,7 @@ body {
 
 /* Основний блок */
 .content {
-    width: 350px;            /* трохи ширше */
+    width: 300px;            /* трохи ширше */
     min-height: 500px;       /* мінімальна висота, щоб блок не “стискався” */
     background-color: rgba(30,30,30,0.6);
     border: 2px solid white;
@@ -98,5 +98,6 @@ body {
         box-shadow: 0 0 20px 4px rgba(255,255,255,0.4);
     }
 }
+
 
 
