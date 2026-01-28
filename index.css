@@ -86,31 +86,5 @@ body {
 
 }
 
-/* Адаптація для мобільних пристроїв */
-@media (max-width: 480px) {
-    .content {
-        width: 90%;          /* ширина блоку майже вся ширина екрану */
-        min-height: 450px;   /* трохи менша висота */
-        padding: 15px;
-    }
 
-    .profile-photo {
-        width: 80px;         /* менше фото */
-        height: 80px;
-        margin-bottom: 10px;
-    }
-
-    .socials img {
-        width: 30px;         /* менші іконки соцмереж */
-        height: 30px;
-    }
-
-    h1 {
-        font-size: 1.4em;    /* трохи менший заголовок */
-    }
-
-    h3 {
-        font-size: 1em;      /* трохи менший підзаголовок */
-    }
-}
 
