@@ -1,29 +1,9 @@
-/* Фонове відео */
-#background-video {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-}
-
-/* Центрування сторінки */
-body {
-    margin: 0;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: Arial, sans-serif;
-}
-
 /* Основний блок */
 .content {
-    width: 300px;
-    max-width: 90%;   /* не більше 90% ширини екрану */
-    height: 500px;
-    max-height: 80%;  /* не більше 80% висоти екрану */
+    width: 90%; /* адаптивна ширина, максимум 300px */
+    max-width: 300px;
+    height: auto; /* висота під контент */
+    min-height: 300px; /* щоб не було занадто маленьким */
     background-color: rgba(30,30,30,0.6);
     border: 2px solid white;
     border-radius: 30px;
@@ -42,64 +22,13 @@ body {
     transition: box-shadow 0.4s ease, transform 0.3s ease;
 }
 
-/* Мʼякий hover ефект */
-.content:hover {
-    animation: none;
-    box-shadow: 0 0 18px 4px rgba(255,255,255,0.55);
-    transform: scale(1.015);
-}
-
-/* Фото профілю */
-.profile-photo {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 15px;
-    border: 2px solid white;
-}
-
-/* Соцмережі */
-.socials {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
-}
-
-.socials img {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-    filter: invert(1) brightness(0.85);
-    transition: filter 0.3s ease, transform 0.3s ease;
-}
-
-.socials img:hover {
-    filter: invert(1) brightness(1)
-        drop-shadow(0 0 10px rgba(255,255,255,0.7))
-        drop-shadow(0 0 20px rgba(200,200,200,0.5))
-        drop-shadow(0 0 30px rgba(150,150,150,0.4));
-    transform: scale(1.2);
-}
-
-/* Анімація світіння */
-@keyframes glow {
-    from {
-        box-shadow: 0 0 10px 2px rgba(255,255,255,0.25);
-    }
-    to {
-        box-shadow: 0 0 14px 3px rgba(255,255,255,0.4);
-    }
-}
-
-/* --- Медіа-запит для телефонів --- */
+/* Медіа-запит для телефонів */
 @media (max-width: 600px) {
     .content {
-        width: 95%;      /* майже вся ширина екрана */
-        height: auto;    /* висота під контент */
+        width: 95%;       /* майже вся ширина екрана */
         border-radius: 20px;
         padding: 15px;
+        height: auto;     /* висота під контент */
     }
 
     .profile-photo {
@@ -111,13 +40,5 @@ body {
     .socials img {
         width: 35px;
         height: 35px;
-    }
-
-    h1 {
-        font-size: 1.2rem;
-    }
-
-    h3 {
-        font-size: 1rem;
     }
 }
