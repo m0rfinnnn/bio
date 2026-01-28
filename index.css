@@ -40,14 +40,12 @@ body {
 }
 
 .content:hover {
-   .content:hover {
-    animation: none; /* ← ОЦЕ ГОЛОВНЕ */
+    animation: none;
     box-shadow:
         0 0 25px 6px rgba(255,255,255,0.8),
         0 0 45px 15px rgba(200,200,200,0.6),
         0 0 70px 25px rgba(150,150,150,0.4);
     transform: scale(1.03);
-}
 }
 
 /* Соцмережі */
@@ -84,6 +82,7 @@ body {
         box-shadow: 0 0 20px rgba(255,255,255,0.6);
     }
 }
+
 
 
 
