@@ -1,9 +1,9 @@
 /* Основний блок */
 .content {
-    width: 90%; /* адаптивна ширина, максимум 300px */
-    max-width: 300px;
-    height: auto; /* висота під контент */
-    min-height: 300px; /* щоб не було занадто маленьким */
+    width: 300px;
+    max-width: 90%;   /* не більше 90% ширини екрану */
+    height: 500px;
+    max-height: 80%;  /* не більше 80% висоти екрану */
     background-color: rgba(30,30,30,0.6);
     border: 2px solid white;
     border-radius: 30px;
@@ -22,6 +22,12 @@
     transition: box-shadow 0.4s ease, transform 0.3s ease;
 }
 
+/* Мʼякий hover ефект */
+.content:hover {
+    animation: none;
+    box-shadow: 0 0 18px 4px rgba(255,255,255,0.55);
+    transform: scale(1.015);
+}
 /* Медіа-запит для телефонів */
 @media (max-width: 600px) {
     .content {
@@ -42,3 +48,4 @@
         height: 35px;
     }
 }
+
