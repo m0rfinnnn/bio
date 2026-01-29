@@ -26,11 +26,7 @@ body {
     margin-top: 0; 
 }
 .title2 {
-    display: flex;
-    align-items: baseline; /* красиво вирівнює текст */
-    gap: 8px;     
-    line-height: 0.1; /* відстань між ними */
-    margin-top: 0; 
+    text-align: center;
 }
 
 /* Основний блок */
@@ -107,6 +103,7 @@ body {
         box-shadow: 0 0 20px 4px rgba(255,255,255,0.4);
     }
 }
+
 
 
 
