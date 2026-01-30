@@ -18,6 +18,10 @@ body {
     font-family: Arial, sans-serif;
 }
 
+h1, h2, h4 {
+    margin: 0;
+    line-height: 1.2;
+}
 .title {
     display: flex;
     align-items: baseline; /* красиво вирівнює текст */
@@ -103,6 +107,7 @@ body {
         box-shadow: 0 0 20px 4px rgba(255,255,255,0.4);
     }
 }
+
 
 
 
