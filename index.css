@@ -163,16 +163,7 @@ body {
 /* DISCORD CARD */
 /* ============================= */
 
-.discord-card {
-    background: #0a0a0a;
-    border-radius: 16px;
-    padding: 12px 18px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 25px;
-    border: 1px solid #333;
-}
+
 
 .avatar-box {
     position: relative;
@@ -241,4 +232,5 @@ body {
     font-size: 0.85rem;
     opacity: 0.6;
 }
+
 
