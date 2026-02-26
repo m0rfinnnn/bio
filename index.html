@@ -1,114 +1,111 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>m0rfinnnn | bio</title>
-  <link rel="stylesheet" href="index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>m0rfinnnn | BIO</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
 
-<!-- Overlay -->
 <div id="overlay" onclick="startSite()">
-  <div class="overlay-content">
-    <span>click to enter...</span>
-  </div>
+    <div class="overlay-content">
+        <span>click to enter...</span>
+    </div>
 </div>
 
-<!-- Background Video -->
-<video autoplay muted loop playsinline id="background-video">
-  <source src="video.mp4" type="video/mp4">
+<video autoplay muted loop playsinline id="bg-video">
+    <source src="video.mp4" type="video/mp4">
 </video>
 
-<!-- Music -->
-<audio id="bg-music" loop>
-  <source src="music.mp3" type="audio/mpeg">
-</audio>
+<div class="background-overlay"></div>
 
-<div class="content">
+<div class="container">
+    <div class="glass-card">
 
-  <img src="photo.jpg" alt="profile" class="profile-photo">
+        <div class="avatar-container">
+            <img src="photo.jpg" alt="rotating-bg" class="rotating-bg">
+            <img src="photo.jpg" alt="main-photo" class="main-photo">
+        </div>
 
-  <div class="title">
-    <h1>m0rfinnnn</h1> 
-    <h2>#page</h2>
-  </div>
+        <h1 class="title">
+            <span class="reveal-text">m0rfinnnn</span>
+            <span>#page</span>
+        </h1>
 
-  <div class="title2">
-    <h4>沉默久了，连解释都显得多余。</h4>
-  </div>
+        <p class="bio">沉默久了，连解释都显得多余。</p>
 
-  <!-- Discord Card -->
-  <div class="discord-card">
-    <div class="status-dot" id="status-dot"></div>
-    <p id="discord-status">Завантаження...</p>
-  </div>
+        <div class="location">
+            UNKNOWN
+        </div>
 
-  <div class="socials">
-    <a href="https://www.instagram.com/gritsishin_roman/" target="_blank">
-      <img src="instagram.svg" alt="Instagram">
-    </a>
+        <div class="discord-card">
+            <div class="avatar-box">
+                <img src="photo.jpg" class="avatar">
+                <div class="status-dot" id="status-dot"></div>
+            </div>
+            <div class="user-info">
+                <div class="top-row">
+                    <span class="username">m0rfinnnn</span>
+                    <span class="badge">USER</span>
+                </div>
+                <p class="discord-status" id="discord-status">Завантаження...</p>
+            </div>
+        </div>
 
-    <a href="https://t.me/m0rfinnnnnn" target="_blank">
-      <img src="telegram.png" alt="Telegram">
-    </a>
+        <div class="socials">
+            <a href="https://www.instagram.com/gritsishin_roman/" target="_blank">Instagram</a>
+            <a href="https://t.me/m0rfinnnnnn" target="_blank">Telegram</a>
+            <a href="https://discord.com/users/950441249700188171" target="_blank">Discord</a>
+        </div>
 
-    <a href="https://discord.com/users/950441249700188171" target="_blank">
-      <img src="discord.svg" alt="Discord">
-    </a>
-  </div>
+        <div class="view-counter">
+            👁 <span>0</span>
+        </div>
 
+    </div>
 </div>
 
 <script>
-
 const DISCORD_ID = "950441249700188171";
-const audio = document.getElementById('bg-music');
-const overlay = document.getElementById('overlay');
 
-// запуск сайту
 function startSite() {
-  audio.volume = 0.5;
-  audio.play().catch(() => {
-    alert("Натисніть ще раз для звуку");
-  });
-
-  overlay.classList.add('overlay-hidden');
-  setTimeout(() => {
-    overlay.style.display = 'none';
-  }, 1000);
+    const overlay = document.getElementById('overlay');
+    overlay.classList.add('overlay-hidden');
+    setTimeout(() => {
+        overlay.style.display = 'none';
+    }, 1000);
 }
 
-// Discord статус
 async function updateStatus() {
-  try {
-    const response = await fetch(`https://api.lanyard.rest/v1/users/${DISCORD_ID}`);
-    const data = await response.json();
+    try {
+        const response = await fetch(`https://api.lanyard.rest/v1/users/${DISCORD_ID}`);
+        const data = await response.json();
 
-    if (data.success) {
-      const { discord_status, activities } = data.data;
-      const statusText = document.getElementById('discord-status');
-      const dot = document.getElementById('status-dot');
+        if (data.success) {
+            const { discord_status, activities } = data.data;
+            const statusText = document.getElementById('discord-status');
+            const dot = document.getElementById('status-dot');
 
-      const colors = {
-        online: '#43b581',
-        idle: '#faa61a',
-        dnd: '#f04747',
-        offline: '#747f8d'
-      };
+            const colors = {
+                online: '#43b581',
+                idle: '#faa61a',
+                dnd: '#f04747',
+                offline: '#747f8d'
+            };
 
-      dot.style.backgroundColor = colors[discord_status] || colors.offline;
+            dot.style.backgroundColor = colors[discord_status] || colors.offline;
 
-      if (activities && activities.length > 0) {
-        const activity = activities.find(a => a.type !== 4);
-        statusText.innerText = activity?.state || activity?.details || "В мережі";
-      } else {
-        statusText.innerText = discord_status === 'offline' ? 'Не в мережі' : 'В мережі';
-      }
+            if (activities && activities.length > 0) {
+                const activity = activities.find(a => a.type !== 4);
+                statusText.innerText = activity?.state || activity?.details || "В мережі";
+            } else {
+                statusText.innerText = discord_status === 'offline' ? 'Не в мережі' : 'В мережі';
+            }
+        }
+    } catch {
+        console.log("Discord error");
     }
-  } catch {
-    console.log("Discord error");
-  }
 }
 
 updateStatus();
@@ -120,19 +117,18 @@ let i = 0;
 document.title = "";
 
 function typeTitle() {
-  if (i < docTitle.length) {
-    document.title += docTitle.charAt(i);
-    i++;
-    setTimeout(typeTitle, 150);
-  }
+    if (i < docTitle.length) {
+        document.title += docTitle.charAt(i);
+        i++;
+        setTimeout(typeTitle, 150);
+    }
 }
-
 typeTitle();
-
 </script>
 
 </body>
 </html>
+
 
 
 
