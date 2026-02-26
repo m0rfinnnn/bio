@@ -1,14 +1,62 @@
-/* Фонове відео */
+/* ============================= */
+/* ФОНОВЕ ВІДЕО */
+/* ============================= */
+
 #background-video {
     position: fixed;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    z-index: -2;
+}
+
+/* затемнення поверх відео */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
     z-index: -1;
 }
 
-/* Центрування сторінки */
+/* ============================= */
+/* OVERLAY */
+/* ============================= */
+
+#overlay {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: transform 1s ease;
+}
+
+.overlay-content span {
+    color: white;
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    opacity: 0.6;
+    animation: pulse 2s infinite;
+}
+
+.overlay-hidden {
+    transform: translateY(-100%);
+}
+
+@keyframes pulse {
+    0%,100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+}
+
+/* ============================= */
+/* BODY */
+/* ============================= */
+
 body {
     margin: 0;
     min-height: 100vh;
@@ -16,37 +64,30 @@ body {
     justify-content: center;
     align-items: center;
     font-family: Arial, sans-serif;
+    overflow: hidden;
+    color: white;
 }
 
 h1, h2, h4 {
     margin: 0;
     line-height: 1.2;
 }
-.title {
-    display: flex;
-    align-items: baseline; /* красиво вирівнює текст */
-    gap: 8px;     
-    line-height: 0.1; /* відстань між ними */
-    margin-top: 0; 
-}
-.title2 {
-    text-align: center;
-}
 
-/* Основний блок */
+/* ============================= */
+/* ОСНОВНИЙ БЛОК */
+/* ============================= */
+
 .content {
-    width: 300px;            /* трохи ширше */
-    min-height: 500px;       /* мінімальна висота, щоб блок не “стискався” */
+    width: 300px;
+    min-height: 520px;
     background-color: rgba(30,30,30,0.6);
     border: 2px solid white;
     border-radius: 30px;
-    color: white;
     box-shadow: 0 0 15px 3px rgba(255,255,255,0.4);
     animation: glow 2s infinite alternate;
 
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* контент зверху, не по центру */
     align-items: center;
 
     text-align: center;
@@ -54,51 +95,98 @@ h1, h2, h4 {
     transition: box-shadow 0.5s ease, transform 0.3s ease;
 }
 
-/* Hover ефект для блоку */
 .content:hover {
     animation: none;
-    box-shadow: 0 0 18px 4px rgba(255,255,255,0.55);
-    transform: scale(1.015);
+    box-shadow: 0 0 22px 5px rgba(255,255,255,0.55);
+    transform: scale(1.02);
 }
 
-/* Фото профілю */
+/* ============================= */
+/* TITLE */
+/* ============================= */
+
+.title {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-top: 5px;
+}
+
+.title2 {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* ============================= */
+/* PROFILE PHOTO */
+/* ============================= */
+
 .profile-photo {
-    width: 120px;            /* трохи більше */
+    width: 120px;
     height: 120px;
-    border-radius: 50%;      /* кругле */
-    object-fit: cover;       /* обрізає фото по колу */
-    margin-bottom: 20px;     /* відступ від тексту */
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
     border: 2px solid white;
-    display: block;          /* щоб фото не “літало” */
 }
 
-/* Соцмережі */
+/* ============================= */
+/* DISCORD CARD */
+/* ============================= */
+
+.discord-card {
+    margin-top: 20px;
+    width: 100%;
+    background: rgba(0,0,0,0.7);
+    border-radius: 15px;
+    padding: 10px;
+    border: 1px solid #444;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    font-size: 0.85rem;
+}
+
+.status-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: gray;
+}
+
+/* ============================= */
+/* SOCIALS */
+/* ============================= */
+
 .socials {
     display: flex;
     gap: 20px;
-    justify-content: center;
-    align-items: center;
-    margin-top: auto;        /* соцмережі внизу блоку */
+    margin-top: auto;
 }
 
-/* Іконки соцмереж */
 .socials img {
     width: 40px;
     height: 40px;
     object-fit: contain;
     filter: invert(1) brightness(0.85);
-    transition: filter 0.3s ease, transform 0.3s ease;
+    transition: 0.3s ease;
 }
 
 .socials img:hover {
     filter: invert(1) brightness(1)
         drop-shadow(0 0 10px rgba(255,255,255,0.7))
-        drop-shadow(0 0 20px rgba(200,200,200,0.5))
-        drop-shadow(0 0 30px rgba(150,150,150,0.4));
+        drop-shadow(0 0 20px rgba(200,200,200,0.5));
     transform: scale(1.2);
 }
 
-/* Анімація світіння блоку */
+/* ============================= */
+/* GLOW ANIMATION */
+/* ============================= */
+
 @keyframes glow {
     from {
         box-shadow: 0 0 10px 2px rgba(255,255,255,0.25);
@@ -107,16 +195,3 @@ h1, h2, h4 {
         box-shadow: 0 0 20px 4px rgba(255,255,255,0.4);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
