@@ -12,7 +12,6 @@ body {
     background: #000;
     font-family: Arial, sans-serif;
     min-height: 100vh;
-    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,36 +26,29 @@ body {
 #overlay {
     position: fixed;
     inset: 0;
-    background-color: #000;
+    background: #000;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 10000;
-    transition: transform 1.2s cubic-bezier(0.85, 0, 0.15, 1);
-}
-
-.overlay-content span {
-    font-size: 11px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    opacity: 0.5;
-    animation: pulseOverlay 2.5s infinite ease-in-out;
+    z-index: 9999;
+    transition: transform 1s ease;
 }
 
 .overlay-hidden {
     transform: translateY(-100%);
 }
 
-@keyframes pulseOverlay {
-    0%,100% { opacity: 0.2; transform: scale(0.95); }
-    50% { opacity: 0.7; transform: scale(1); }
+.overlay-content span {
+    font-size: 12px;
+    letter-spacing: 3px;
+    opacity: 0.5;
 }
 
 /* ============================= */
-/* BACKGROUND VIDEO */
+/* VIDEO */
 /* ============================= */
 
-#background-video {
+#bg-video {
     position: fixed;
     inset: 0;
     width: 100%;
@@ -65,23 +57,33 @@ body {
     z-index: -2;
 }
 
-body::after {
-    content: "";
+.background-overlay {
     position: fixed;
     inset: 0;
     background: linear-gradient(90deg,
-        rgba(0,0,0,0.8) 0%,
-        rgba(0,0,0,0.2) 100%);
+        rgba(0,0,0,0.8),
+        rgba(0,0,0,0.3));
     z-index: -1;
 }
 
 /* ============================= */
-/* ОСНОВНА КАРТКА (.content) */
+/* CONTAINER */
 /* ============================= */
 
-.content {
-    background: rgba(59, 59, 59, 0.39);
-    border: 2px solid #ffffff;
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ============================= */
+/* GLASS CARD */
+/* ============================= */
+
+.glass-card {
+    background: rgba(59,59,59,0.4);
+    border: 2px solid #fff;
     border-radius: 24px;
     width: 95%;
     max-width: 600px;
@@ -92,10 +94,11 @@ body::after {
         0 0 30px rgba(255,255,255,0.4),
         0 0 60px rgba(255,255,255,0.2);
 
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(15px);
+    transition: 0.3s ease;
 }
 
-.content:hover {
+.glass-card:hover {
     transform: translateY(-5px);
     box-shadow:
         0 0 50px rgba(255,255,255,0.6),
@@ -103,16 +106,37 @@ body::after {
 }
 
 /* ============================= */
-/* PROFILE PHOTO (замість avatar-container) */
+/* AVATAR */
 /* ============================= */
 
-.profile-photo {
+.avatar-container {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    margin: 0 auto 25px;
+}
+
+.rotating-bg {
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    filter: blur(20px);
+    animation: rotate 10s linear infinite;
+}
+
+.main-photo {
+    position: relative;
     width: 120px;
     height: 120px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 25px;
     border: 3px solid #000;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 /* ============================= */
@@ -120,24 +144,17 @@ body::after {
 /* ============================= */
 
 .title {
-    font-size: 2.6rem;
+    font-size: 2.4rem;
     font-weight: 900;
     display: flex;
     justify-content: center;
-    align-items: baseline;
-    gap: 12px;
+    gap: 10px;
     margin-bottom: 10px;
 }
 
-.title h2 {
-    font-size: 1.4rem;
-    font-weight: 700;
-}
-
-.title2 {
-    font-size: 1rem;
+.bio {
     margin-bottom: 25px;
-    opacity: 0.85;
+    opacity: 0.8;
 }
 
 /* ============================= */
@@ -150,24 +167,46 @@ body::after {
     padding: 12px 18px;
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 12px;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     border: 1px solid #333;
 }
 
+.avatar-box {
+    position: relative;
+}
+
+.avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
 .status-dot {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
     width: 12px;
     height: 12px;
     border-radius: 50%;
     background: gray;
+    border: 2px solid #0a0a0a;
+}
+
+.username {
+    font-weight: bold;
+}
+
+.badge {
+    font-size: 10px;
+    background: #333;
+    padding: 2px 6px;
+    border-radius: 6px;
+    margin-left: 5px;
 }
 
 .discord-status {
     font-size: 0.85rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 /* ============================= */
@@ -177,19 +216,26 @@ body::after {
 .socials {
     display: flex;
     justify-content: center;
-    gap: 35px;
+    gap: 30px;
+    margin-bottom: 15px;
 }
 
-.socials img {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-    filter: invert(1) brightness(0.85);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+.socials a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
 }
 
-.socials img:hover {
-    transform: scale(1.2) translateY(-5px);
-    filter: invert(1) brightness(1)
-        drop-shadow(0 0 20px rgba(255,255,255,0.8));
+.socials a:hover {
+    opacity: 0.7;
+}
+
+/* ============================= */
+/* VIEW COUNTER */
+/* ============================= */
+
+.view-counter {
+    font-size: 0.85rem;
+    opacity: 0.6;
 }
