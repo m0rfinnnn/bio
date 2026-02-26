@@ -6,140 +6,119 @@
     <title>m0rfinnnn | BIO</title>
     <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
 
-<div id="overlay" onclick="startSite()">
-    <div class="overlay-content">
-        <span>click to enter...</span>
+    <!-- OVERLAY -->
+    <div id="overlay" onclick="startSite()">
+        <div class="overlay-content">
+            <span>click to enter...</span>
+        </div>
     </div>
-</div>
 
-<video autoplay muted loop playsinline id="bg-video">
-    <source src="video.mp4" type="video/mp4">
-</video>
+    <!-- BACKGROUND VIDEO -->
+    <video autoplay muted loop playsinline id="bg-video">
+        <source src="video.mp4" type="video/mp4">
+    </video>
 
-<div class="background-overlay"></div>
+    <div class="background-overlay"></div>
 
-<div class="container">
-    <div class="glass-card">
+    <!-- MAIN CONTAINER -->
+    <div class="container">
+        <div class="glass-card">
 
-        <div class="avatar-container">
-            <img src="photo.jpg" alt="rotating-bg" class="rotating-bg">
-            <img src="photo.jpg" alt="main-photo" class="main-photo">
-        </div>
-
-        <h1 class="title">
-            <span class="reveal-text">m0rfinnnn</span>
-            <span>#page</span>
-        </h1>
-
-        <p class="bio">沉默久了，连解释都显得多余。</p>
-
-        <div class="location">
-            UNKNOWN
-        </div>
-
-        <div class="discord-card">
-            <div class="avatar-box">
-                <img src="photo.jpg" class="avatar">
-                <div class="status-dot" id="status-dot"></div>
+            <!-- AVATAR -->
+            <div class="avatar-container">
+                <img src="photo.jpg" alt="rotating-bg" class="rotating-bg">
+                <img src="photo.jpg" alt="main-photo" class="main-photo">
             </div>
-            <div class="user-info">
-                <div class="top-row">
-                    <span class="username">m0rfinnnn</span>
-                    <span class="badge">USER</span>
+
+            <!-- TITLE -->
+            <h1 class="title">
+                <span>m0rfinnnn</span>
+                <span>#page</span>
+            </h1>
+
+            <p class="bio">沉默久了，连解释都显得多余。</p>
+
+            <div class="location">
+                UNKNOWN
+            </div>
+
+            <!-- DISCORD CARD -->
+            <div class="discord-card">
+                <div class="avatar-box">
+                    <img src="photo.jpg" class="avatar">
+                    <div class="status-dot" id="status-dot"></div>
                 </div>
-                <p class="discord-status" id="discord-status">Завантаження...</p>
+
+                <div class="user-info">
+                    <div class="top-row">
+                        <span class="username">m0rfinnnn</span>
+                        <span class="badge">USER</span>
+                    </div>
+                    <p class="discord-status" id="discord-status">Завантаження...</p>
+                </div>
             </div>
-        </div>
 
-        <div class="socials">
-            <a href="https://www.instagram.com/gritsishin_roman/" target="_blank">Instagram</a>
-            <a href="https://t.me/m0rfinnnnnn" target="_blank">Telegram</a>
-            <a href="https://discord.com/users/950441249700188171" target="_blank">Discord</a>
-        </div>
+            <!-- SOCIALS -->
+            <div class="socials">
+                <a href="https://www.instagram.com/gritsishin_roman/" target="_blank">Instagram</a>
+                <a href="https://t.me/m0rfinnnnnn" target="_blank">Telegram</a>
+                <a href="https://discord.com/users/950441249700188171" target="_blank">Discord</a>
+            </div>
 
-        <div class="view-counter">
-            👁 <span>0</span>
-        </div>
+            <!-- VIEW COUNTER -->
+            <div class="view-counter">
+                👁 <span>0</span>
+            </div>
 
+        </div>
     </div>
-</div>
 
-<script>
-const DISCORD_ID = "950441249700188171";
+    <script>
+        const DISCORD_ID = "950441249700188171";
 
-function startSite() {
-    const overlay = document.getElementById('overlay');
-    overlay.classList.add('overlay-hidden');
-    setTimeout(() => {
-        overlay.style.display = 'none';
-    }, 1000);
-}
+        function startSite() {
+            const overlay = document.getElementById("overlay");
+            overlay.classList.add("overlay-hidden");
+            setTimeout(() => {
+                overlay.style.display = "none";
+            }, 1000);
+        }
 
-async function updateStatus() {
-    try {
-        const response = await fetch(`https://api.lanyard.rest/v1/users/${DISCORD_ID}`);
-        const data = await response.json();
+        async function updateStatus() {
+            try {
+                const response = await fetch(`https://api.lanyard.rest/v1/users/${DISCORD_ID}`);
+                const data = await response.json();
 
-        if (data.success) {
-            const { discord_status, activities } = data.data;
-            const statusText = document.getElementById('discord-status');
-            const dot = document.getElementById('status-dot');
+                if (data.success) {
+                    const { discord_status } = data.data;
+                    const dot = document.getElementById("status-dot");
+                    const statusText = document.getElementById("discord-status");
 
-            const colors = {
-                online: '#43b581',
-                idle: '#faa61a',
-                dnd: '#f04747',
-                offline: '#747f8d'
-            };
+                    const colors = {
+                        online: "#43b581",
+                        idle: "#faa61a",
+                        dnd: "#f04747",
+                        offline: "#747f8d"
+                    };
 
-            dot.style.backgroundColor = colors[discord_status] || colors.offline;
+                    dot.style.backgroundColor = colors[discord_status] || colors.offline;
 
-            if (activities && activities.length > 0) {
-                const activity = activities.find(a => a.type !== 4);
-                statusText.innerText = activity?.state || activity?.details || "В мережі";
-            } else {
-                statusText.innerText = discord_status === 'offline' ? 'Не в мережі' : 'В мережі';
+                    statusText.innerText =
+                        discord_status === "offline"
+                        ? "Не в мережі"
+                        : "В мережі";
+                }
+            } catch {
+                console.log("Discord error");
             }
         }
-    } catch {
-        console.log("Discord error");
-    }
-}
 
-updateStatus();
-setInterval(updateStatus, 15000);
-
-// анімація title
-let docTitle = "m0rfinnnn | BIO";
-let i = 0;
-document.title = "";
-
-function typeTitle() {
-    if (i < docTitle.length) {
-        document.title += docTitle.charAt(i);
-        i++;
-        setTimeout(typeTitle, 150);
-    }
-}
-typeTitle();
-</script>
+        updateStatus();
+        setInterval(updateStatus, 15000);
+    </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
