@@ -7,7 +7,9 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+* {
+    cursor: none !important;
+}
 body {
     background: #000;
     font-family: Arial, sans-serif;
@@ -213,6 +215,7 @@ body {
             drop-shadow(0 0 8px rgba(255,255,255,0.6))
             drop-shadow(0 0 18px rgba(255,255,255,0.4));
 }
+
 
 
 
