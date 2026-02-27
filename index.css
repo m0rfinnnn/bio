@@ -7,9 +7,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-* {
-    cursor: none !important;
-}
+
 body {
     background: #000;
     font-family: Arial, sans-serif;
@@ -20,22 +18,44 @@ body {
     overflow: hidden;
     color: #fff;
 }
-body {
-    cursor: none;
+/* Ховаємо стандартний курсор */
+* {
+    cursor: none !important;
 }
 
+/* Голова */
+.cursor-head {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 100000;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 6px rgba(255,255,255,0.3);
+    transition: width 0.2s ease, height 0.2s ease;
+}
+
+/* Сегменти змійки */
 .cursor-segment {
     position: fixed;
-    width: 7px;
-    height: 7px;
-    background: rgba(255,255,255,0.85);
+    width: 6px;
+    height: 6px;
+    background: rgba(255,255,255,0.6);
     border-radius: 50%;
     pointer-events: none;
     z-index: 99999;
     transform: translate(-50%, -50%);
-    
-    box-shadow: 0 0 8px rgba(255,255,255,0.4);
+    box-shadow: 0 0 6px rgba(255,255,255,0.2);
 }
+
+/* Hover ефект */
+.cursor-head.hover {
+    width: 10px;
+    height: 10px;
+}
+
 @keyframes fadeOut {
     to {
         opacity: 0;
@@ -215,6 +235,7 @@ body {
             drop-shadow(0 0 8px rgba(255,255,255,0.6))
             drop-shadow(0 0 18px rgba(255,255,255,0.4));
 }
+
 
 
 
