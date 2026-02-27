@@ -62,12 +62,11 @@
     </div>
 <script>
 const segments = [];
-const segmentCount = 25; // довжина змійки
+const segmentCount = 30;
 
 let mouseX = 0;
 let mouseY = 0;
 
-// створюємо сегменти
 for (let i = 0; i < segmentCount; i++) {
     const div = document.createElement('div');
     div.classList.add('cursor-segment');
@@ -90,8 +89,8 @@ function animate() {
 
     segments.forEach((segment, index) => {
 
-        segment.x += (x - segment.x) * 0.35;
-        segment.y += (y - segment.y) * 0.35;
+        segment.x += (x - segment.x) * 0.25;
+        segment.y += (y - segment.y) * 0.25;
 
         segment.element.style.left = segment.x + 'px';
         segment.element.style.top = segment.y + 'px';
@@ -99,7 +98,6 @@ function animate() {
         x = segment.x;
         y = segment.y;
 
-        // робимо хвіст прозорішим
         segment.element.style.opacity = 1 - index / segmentCount;
     });
 
@@ -154,6 +152,7 @@ animate();
 <div class="cursor-snake"></div>
 </body>
 </html>
+
 
 
 
