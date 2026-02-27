@@ -61,26 +61,52 @@
         </div>
     </div>
 <script>
-const cursor = document.querySelector('.cursor');
+const segments = [];
+const segmentCount = 25; // довжина змійки
+
+let mouseX = 0;
+let mouseY = 0;
+
+// створюємо сегменти
+for (let i = 0; i < segmentCount; i++) {
+    const div = document.createElement('div');
+    div.classList.add('cursor-segment');
+    document.body.appendChild(div);
+    segments.push({
+        element: div,
+        x: 0,
+        y: 0
+    });
+}
 
 document.addEventListener('mousemove', (e) => {
-    const x = e.clientX;
-    const y = e.clientY;
-
-    cursor.style.left = x + 'px';
-    cursor.style.top = y + 'px';
-
-    const dot = document.createElement('div');
-    dot.classList.add('trail-dot');
-    dot.style.left = x + 'px';
-    dot.style.top = y + 'px';
-
-    document.body.appendChild(dot);
-
-    setTimeout(() => {
-        dot.remove();
-    }, 600);
+    mouseX = e.clientX;
+    mouseY = e.clientY;
 });
+
+function animate() {
+    let x = mouseX;
+    let y = mouseY;
+
+    segments.forEach((segment, index) => {
+
+        segment.x += (x - segment.x) * 0.35;
+        segment.y += (y - segment.y) * 0.35;
+
+        segment.element.style.left = segment.x + 'px';
+        segment.element.style.top = segment.y + 'px';
+
+        x = segment.x;
+        y = segment.y;
+
+        // робимо хвіст прозорішим
+        segment.element.style.opacity = 1 - index / segmentCount;
+    });
+
+    requestAnimationFrame(animate);
+}
+
+animate();
 </script>
     <script>
         const DISCORD_ID = "950441249700188171";
@@ -128,6 +154,7 @@ document.addEventListener('mousemove', (e) => {
 
 </body>
 </html>
+
 
 
 
