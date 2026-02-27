@@ -18,37 +18,38 @@ body {
     overflow: hidden;
     color: #fff;
 }
-/* ============================= */
-/* GLOW CURSOR + TRAIL */
-/* ============================= */
-
 body {
     cursor: none;
 }
 
-.cursor,
-.cursor-trail {
+.cursor {
     position: fixed;
+    width: 8px;
+    height: 8px;
+    background: white;
     border-radius: 50%;
     pointer-events: none;
     z-index: 99999;
     transform: translate(-50%, -50%);
 }
 
-.cursor {
-    width: 10px;
-    height: 10px;
-    background: white;
-    box-shadow:
-        0 0 8px rgba(255,255,255,0.8),
-        0 0 20px rgba(255,255,255,0.5);
+.trail-dot {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99998;
+    transform: translate(-50%, -50%);
+    animation: fadeOut 0.6s linear forwards;
 }
 
-.cursor-trail {
-    width: 45px;                 /* було 25px */
-    height: 45px;
-    background: rgba(255,255,255,0.12);
-    filter: blur(15px);          /* сильніше розмиття */
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
 }
 /* ============================= */
 /* OVERLAY */
@@ -223,6 +224,7 @@ body {
             drop-shadow(0 0 8px rgba(255,255,255,0.6))
             drop-shadow(0 0 18px rgba(255,255,255,0.4));
 }
+
 
 
 
