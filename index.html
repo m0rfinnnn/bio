@@ -62,9 +62,11 @@
     <div class="cursor-dot"></div>
 <script>
 
-if (window.matchMedia("(hover: hover)").matches) {
+if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
 
-    const dot = document.querySelector('.cursor-dot');
+    const dot = document.createElement("div");
+    dot.classList.add("cursor-dot");
+    document.body.appendChild(dot);
 
     document.addEventListener('mousemove', (e) => {
         dot.style.left = e.clientX + "px";
@@ -124,6 +126,7 @@ if (window.matchMedia("(hover: hover)").matches) {
 
 </body>
 </html>
+
 
 
 
