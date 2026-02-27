@@ -237,6 +237,16 @@ body {
 }
 
 
+@media (hover: none) and (pointer: coarse) {
+    .cursor-head,
+    .cursor-segment {
+        display: none !important;
+    }
+
+    * {
+        cursor: auto !important;
+    }
+}
 
 
 
