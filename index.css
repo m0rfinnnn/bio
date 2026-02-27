@@ -19,14 +19,9 @@ body {
     color: #fff;
 }
 /* Ховаємо стандартний курсор */
-* {
-    cursor: none !important;
-}
+
 
 /* ховаємо стандартний курсор */
-* {
-    cursor: none !important;
-}
 
 /* сама точка */
 .cursor-dot {
@@ -238,6 +233,7 @@ body {
         cursor: auto !important;
     }
 }
+
 
 
 
