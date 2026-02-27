@@ -165,7 +165,7 @@ body {
 
 .socials {
       margin-top: auto;   /* штовхає вниз */
-    padding-top: 50px;  /* невеликий відступ */
+    padding-top: 40px;  /* невеликий відступ */
     display: flex;
     justify-content: center;
     gap: 25px;
@@ -201,6 +201,7 @@ body {
     font-size: 0.85rem;
     opacity: 0.6;
 }
+
 
 
 
