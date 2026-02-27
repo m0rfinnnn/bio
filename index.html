@@ -59,65 +59,24 @@
 
         </div>
     </div>
-    <div class="cursor-head"></div>
+    <div class="cursor-dot"></div>
 <script>
-const head = document.querySelector('.cursor-head');
+<script>
+if (window.matchMedia("(hover: hover)").matches) {
 
-const segments = [];
-const segmentCount = 14; // довжина змійки
+    const dot = document.querySelector('.cursor-dot');
 
-let mouseX = 0;
-let mouseY = 0;
-
-// створюємо сегменти
-for (let i = 0; i < segmentCount; i++) {
-    const div = document.createElement('div');
-    div.classList.add('cursor-segment');
-    document.body.appendChild(div);
-    segments.push({
-        element: div,
-        x: 0,
-        y: 0
-    });
-}
-
-document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-});
-
-// hover ефект на іконки
-document.querySelectorAll("a").forEach(el => {
-    el.addEventListener("mouseenter", () => head.classList.add("hover"));
-    el.addEventListener("mouseleave", () => head.classList.remove("hover"));
-});
-
-function animate() {
-    // рух голови
-    head.style.left = mouseX + "px";
-    head.style.top = mouseY + "px";
-
-    let x = mouseX;
-    let y = mouseY;
-
-    segments.forEach((segment, index) => {
-
-        segment.x += (x - segment.x) * 0.22;
-        segment.y += (y - segment.y) * 0.22;
-
-        segment.element.style.left = segment.x + 'px';
-        segment.element.style.top = segment.y + 'px';
-
-        x = segment.x;
-        y = segment.y;
-
-        segment.element.style.opacity = 0.7 - index / segmentCount;
+    document.addEventListener('mousemove', (e) => {
+        dot.style.left = e.clientX + "px";
+        dot.style.top = e.clientY + "px";
     });
 
-    requestAnimationFrame(animate);
+    document.querySelectorAll("a").forEach(el => {
+        el.addEventListener("mouseenter", () => dot.classList.add("hover"));
+        el.addEventListener("mouseleave", () => dot.classList.remove("hover"));
+    });
 }
-
-animate();
+</script>
 </script>
     <script>
         const DISCORD_ID = "950441249700188171";
@@ -165,6 +124,7 @@ animate();
 
 </body>
 </html>
+
 
 
 
