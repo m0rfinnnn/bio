@@ -19,30 +19,36 @@ body {
     color: #fff;
 }
 /* ============================= */
-/* GLOW CURSOR */
+/* GLOW CURSOR + TRAIL */
 /* ============================= */
 
 body {
-    cursor: none; /* ховаємо стандартний курсор */
+    cursor: none;
+}
+
+.cursor,
+.cursor-trail {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
 }
 
 .cursor {
-    position: fixed;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
+    width: 10px;
+    height: 10px;
     background: white;
-
-    pointer-events: none;
-    z-index: 99999;
-
     box-shadow:
         0 0 8px rgba(255,255,255,0.8),
-        0 0 20px rgba(255,255,255,0.5),
-        0 0 35px rgba(255,255,255,0.3);
+        0 0 20px rgba(255,255,255,0.5);
+}
 
-    transform: translate(-50%, -50%);
-    transition: transform 0.08s ease;
+.cursor-trail {
+    width: 25px;
+    height: 25px;
+    background: rgba(255,255,255,0.15);
+    filter: blur(8px);
 }
 /* ============================= */
 /* OVERLAY */
@@ -217,6 +223,7 @@ body {
             drop-shadow(0 0 8px rgba(255,255,255,0.6))
             drop-shadow(0 0 18px rgba(255,255,255,0.4));
 }
+
 
 
 
