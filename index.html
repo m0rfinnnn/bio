@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <div class="cursor"></div>
+<div class="cursor-trail"></div>
 <body>
 
     <!-- OVERLAY -->
@@ -61,11 +62,32 @@
     </div>
 <script>
 const cursor = document.querySelector('.cursor');
+const trail = document.querySelector('.cursor-trail');
+
+let mouseX = 0;
+let mouseY = 0;
+let trailX = 0;
+let trailY = 0;
 
 document.addEventListener('mousemove', (e) => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    cursor.style.left = mouseX + 'px';
+    cursor.style.top = mouseY + 'px';
 });
+
+function animateTrail() {
+    trailX += (mouseX - trailX) * 0.1;
+    trailY += (mouseY - trailY) * 0.1;
+
+    trail.style.left = trailX + 'px';
+    trail.style.top = trailY + 'px';
+
+    requestAnimationFrame(animateTrail);
+}
+
+animateTrail();
 </script>
     <script>
         const DISCORD_ID = "950441249700188171";
@@ -113,6 +135,7 @@ document.addEventListener('mousemove', (e) => {
 
 </body>
 </html>
+
 
 
 
