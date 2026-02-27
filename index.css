@@ -84,6 +84,8 @@ body {
 /* ============================= */
 
 .glass-card {
+     display: flex;
+    flex-direction: column;
     background: rgba(59,59,59,0.30);
     border: 2px solid #fff;
     border-radius: 24px;
@@ -162,6 +164,8 @@ body {
 /* ============================= */
 
 .socials {
+      margin-top: auto;   /* штовхає вниз */
+    padding-top: 30px;  /* невеликий відступ */
     display: flex;
     justify-content: center;
     gap: 25px;
@@ -194,6 +198,7 @@ body {
     font-size: 0.85rem;
     opacity: 0.6;
 }
+
 
 
 
