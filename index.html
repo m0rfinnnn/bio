@@ -78,8 +78,8 @@ document.addEventListener('mousemove', (e) => {
 });
 
 function animateTrail() {
-    trailX += (mouseX - trailX) * 0.05;
-    trailY += (mouseY - trailY) * 0.05;
+    trailX += (mouseX - trailX) * 0.03;
+    trailY += (mouseY - trailY) * 0.03;
 
     trail.style.left = trailX + 'px';
     trail.style.top = trailY + 'px';
@@ -135,6 +135,7 @@ animateTrail();
 
 </body>
 </html>
+
 
 
 
