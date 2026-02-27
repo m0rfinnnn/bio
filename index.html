@@ -62,32 +62,25 @@
     </div>
 <script>
 const cursor = document.querySelector('.cursor');
-const trail = document.querySelector('.cursor-trail');
-
-let mouseX = 0;
-let mouseY = 0;
-let trailX = 0;
-let trailY = 0;
 
 document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+    const x = e.clientX;
+    const y = e.clientY;
 
-    cursor.style.left = mouseX + 'px';
-    cursor.style.top = mouseY + 'px';
+    cursor.style.left = x + 'px';
+    cursor.style.top = y + 'px';
+
+    const dot = document.createElement('div');
+    dot.classList.add('trail-dot');
+    dot.style.left = x + 'px';
+    dot.style.top = y + 'px';
+
+    document.body.appendChild(dot);
+
+    setTimeout(() => {
+        dot.remove();
+    }, 600);
 });
-
-function animateTrail() {
-    trailX += (mouseX - trailX) * 0.01;
-    trailY += (mouseY - trailY) * 0.01;
-
-    trail.style.left = trailX + 'px';
-    trail.style.top = trailY + 'px';
-
-    requestAnimationFrame(animateTrail);
-}
-
-animateTrail();
 </script>
     <script>
         const DISCORD_ID = "950441249700188171";
@@ -135,6 +128,7 @@ animateTrail();
 
 </body>
 </html>
+
 
 
 
