@@ -23,37 +23,28 @@ body {
     cursor: none !important;
 }
 
-/* Голова */
-.cursor-head {
+/* ховаємо стандартний курсор */
+* {
+    cursor: none !important;
+}
+
+/* сама точка */
+.cursor-dot {
     position: fixed;
-    width: 6px;
-    height: 6px;
-    background: rgba(255,255,255,0.95);
+    width: 8px;
+    height: 8px;
+    background: white;
     border-radius: 50%;
     pointer-events: none;
     z-index: 100000;
     transform: translate(-50%, -50%);
-    box-shadow: 0 0 6px rgba(255,255,255,0.3);
-    transition: width 0.2s ease, height 0.2s ease;
+    transition: transform 0.15s ease, background 0.2s ease;
 }
 
-/* Сегменти змійки */
-.cursor-segment {
-    position: fixed;
-    width: 6px;
-    height: 6px;
-    background: rgba(255,255,255,0.6);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 99999;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 0 6px rgba(255,255,255,0.2);
-}
-
-/* Hover ефект */
-.cursor-head.hover {
-    width: 10px;
-    height: 10px;
+/* ефект при наведенні */
+.cursor-dot.hover {
+    transform: translate(-50%, -50%) scale(1.8);
+    background: #ffffff;
 }
 
 @keyframes fadeOut {
@@ -247,6 +238,7 @@ body {
         cursor: auto !important;
     }
 }
+
 
 
 
