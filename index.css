@@ -173,14 +173,13 @@ body {
 }
 
 .socials img {
-    width: 32px;
-    height: 32px;
+        width: 40px;   /* було 32px */
+    height: 40px;
     object-fit: contain;
 
-    /* трохи сірі іконки */
     filter: brightness(0) invert(0.85);
-
     transition: 0.3s ease;
+
 }
 
 .socials img:hover {
@@ -195,6 +194,7 @@ body {
     font-size: 0.85rem;
     opacity: 0.6;
 }
+
 
 
 
