@@ -182,7 +182,7 @@ body {
     width: 28px;
     height: 28px;
     object-fit: contain;
-    filter: brightness(0) invert(1);
+    filter: brightness(0) invert(0.7);
     transition: 0.3s ease;
 }
 
@@ -199,5 +199,6 @@ body {
     font-size: 0.85rem;
     opacity: 0.6;
 }
+
 
 
