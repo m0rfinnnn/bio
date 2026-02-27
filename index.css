@@ -24,17 +24,16 @@ body {
 
 .cursor-segment {
     position: fixed;
-    width: 12px;
-    height: 12px;
-    background: #ffffff;
+    width: 6px;
+    height: 6px;
+    background: rgba(255,255,255,0.9);
     border-radius: 50%;
     pointer-events: none;
     z-index: 99999;
     transform: translate(-50%, -50%);
     box-shadow: 
-        0 0 10px rgba(255,255,255,0.8),
-        0 0 20px rgba(255,255,255,0.6),
-        0 0 40px rgba(255,255,255,0.4);
+        0 0 6px rgba(255,255,255,0.6),
+        0 0 12px rgba(255,255,255,0.3);
 }
 @keyframes fadeOut {
     to {
@@ -215,6 +214,7 @@ body {
             drop-shadow(0 0 8px rgba(255,255,255,0.6))
             drop-shadow(0 0 18px rgba(255,255,255,0.4));
 }
+
 
 
 
