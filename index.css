@@ -175,8 +175,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid #ffffff;
-    border-radius: 50%;
     transition: 0.3s ease;
 }
 
@@ -201,4 +199,5 @@ body {
     font-size: 0.85rem;
     opacity: 0.6;
 }
+
 
