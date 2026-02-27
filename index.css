@@ -165,32 +165,28 @@ body {
     display: flex;
     justify-content: center;
     gap: 25px;
-    margin-top: 35px;   /* нижче */
-    margin-bottom: 20px;
+    margin-top: 35px;
 }
 
 .socials a {
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.3s ease;
+    display: inline-block;
 }
 
 .socials img {
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
     object-fit: contain;
-    filter: brightness(0) invert(0.8);
+
+    /* трохи сірі іконки */
+    filter: brightness(0) invert(0.85);
+
     transition: 0.3s ease;
 }
 
-.socials a:hover {
+.socials img:hover {
     transform: translateY(-5px);
-    box-shadow: 0 0 15px #ffffff;
+    filter: brightness(0) invert(1); /* стають білими при наведенні */
 }
-
 /* ============================= */
 /* VIEW COUNTER */
 /* ============================= */
@@ -199,6 +195,7 @@ body {
     font-size: 0.85rem;
     opacity: 0.6;
 }
+
 
 
 
