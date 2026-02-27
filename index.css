@@ -18,7 +18,32 @@ body {
     overflow: hidden;
     color: #fff;
 }
+/* ============================= */
+/* GLOW CURSOR */
+/* ============================= */
 
+body {
+    cursor: none; /* ховаємо стандартний курсор */
+}
+
+.cursor {
+    position: fixed;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: white;
+
+    pointer-events: none;
+    z-index: 99999;
+
+    box-shadow:
+        0 0 8px rgba(255,255,255,0.8),
+        0 0 20px rgba(255,255,255,0.5),
+        0 0 35px rgba(255,255,255,0.3);
+
+    transform: translate(-50%, -50%);
+    transition: transform 0.08s ease;
+}
 /* ============================= */
 /* OVERLAY */
 /* ============================= */
@@ -192,6 +217,7 @@ body {
             drop-shadow(0 0 8px rgba(255,255,255,0.6))
             drop-shadow(0 0 18px rgba(255,255,255,0.4));
 }
+
 
 
 
