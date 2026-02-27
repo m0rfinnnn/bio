@@ -223,16 +223,20 @@ body {
 }
 
 
-@media (hover: none) and (pointer: coarse) {
-    .cursor-head,
-    .cursor-segment {
-        display: none !important;
-    }
-
+/* Ховаємо стандартний курсор ТІЛЬКИ на ПК */
+@media (hover: hover) and (pointer: fine) {
     * {
-        cursor: auto !important;
+        cursor: none !important;
     }
 }
+
+/* На телефоні повністю прибираємо кастомну точку */
+@media (hover: none) and (pointer: coarse) {
+    .cursor-dot {
+        display: none !important;
+    }
+}
+
 
 
 
