@@ -45,10 +45,10 @@ body {
 }
 
 .cursor-trail {
-    width: 25px;
-    height: 25px;
-    background: rgba(255,255,255,0.15);
-    filter: blur(8px);
+    width: 45px;                 /* було 25px */
+    height: 45px;
+    background: rgba(255,255,255,0.12);
+    filter: blur(15px);          /* сильніше розмиття */
 }
 /* ============================= */
 /* OVERLAY */
@@ -223,6 +223,7 @@ body {
             drop-shadow(0 0 8px rgba(255,255,255,0.6))
             drop-shadow(0 0 18px rgba(255,255,255,0.4));
 }
+
 
 
 
