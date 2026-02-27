@@ -61,12 +61,15 @@
         </div>
     </div>
 <script>
+const head = document.querySelector('.cursor-head');
+
 const segments = [];
-const segmentCount = 30;
+const segmentCount = 22; // довжина змійки
 
 let mouseX = 0;
 let mouseY = 0;
 
+// створюємо сегменти
 for (let i = 0; i < segmentCount; i++) {
     const div = document.createElement('div');
     div.classList.add('cursor-segment');
@@ -83,14 +86,24 @@ document.addEventListener('mousemove', (e) => {
     mouseY = e.clientY;
 });
 
+// hover ефект на іконки
+document.querySelectorAll("a").forEach(el => {
+    el.addEventListener("mouseenter", () => head.classList.add("hover"));
+    el.addEventListener("mouseleave", () => head.classList.remove("hover"));
+});
+
 function animate() {
+    // рух голови
+    head.style.left = mouseX + "px";
+    head.style.top = mouseY + "px";
+
     let x = mouseX;
     let y = mouseY;
 
     segments.forEach((segment, index) => {
 
-        segment.x += (x - segment.x) * 0.25;
-        segment.y += (y - segment.y) * 0.25;
+        segment.x += (x - segment.x) * 0.22;
+        segment.y += (y - segment.y) * 0.22;
 
         segment.element.style.left = segment.x + 'px';
         segment.element.style.top = segment.y + 'px';
@@ -98,7 +111,7 @@ function animate() {
         x = segment.x;
         y = segment.y;
 
-        segment.element.style.opacity = 1 - index / segmentCount;
+        segment.element.style.opacity = 0.7 - index / segmentCount;
     });
 
     requestAnimationFrame(animate);
@@ -152,6 +165,7 @@ animate();
 <div class="cursor-head"></div>
 </body>
 </html>
+
 
 
 
