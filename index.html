@@ -78,12 +78,19 @@ if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
         el.addEventListener("mouseleave", () => dot.classList.remove("hover"));
     });
 }
+   function startSite() {
     const overlay = document.getElementById("overlay");
-const music = document.getElementById("bg-music");
+    const music = document.getElementById("bg-music");
 
-overlay.addEventListener("click", () => {
     overlay.classList.add("overlay-hidden");
+
+    music.volume = 0.4;   // гучність 40%
     music.play();
+
+    setTimeout(() => {
+        overlay.style.display = "none";
+    }, 1000);
+}
 </script>
 
     <script>
@@ -134,6 +141,7 @@ overlay.addEventListener("click", () => {
 </audio>
 </body>
 </html>
+
 
 
 
