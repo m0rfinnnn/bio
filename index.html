@@ -78,32 +78,25 @@ if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
         el.addEventListener("mouseleave", () => dot.classList.remove("hover"));
     });
 }
-   function startSite() {
-    const overlay = document.getElementById("overlay");
-    const music = document.getElementById("bg-music");
-
-    overlay.classList.add("overlay-hidden");
-
-    music.volume = 0.4;   // гучність 40%
-    music.play();
-
-    setTimeout(() => {
-        overlay.style.display = "none";
-    }, 1000);
-}
+  
 </script>
 
     <script>
         const DISCORD_ID = "950441249700188171";
 
-        function startSite() {
-            const overlay = document.getElementById("overlay");
-            overlay.classList.add("overlay-hidden");
-            setTimeout(() => {
-                overlay.style.display = "none";
-            }, 1000);
-        }
+       function startSite() {
+    const overlay = document.getElementById("overlay");
+    const music = document.getElementById("bg-music");
 
+    overlay.classList.add("overlay-hidden");
+
+    music.volume = 0.4; // 40% гучності
+    music.play().catch(err => console.log("Music blocked:", err));
+
+    setTimeout(() => {
+        overlay.style.display = "none";
+    }, 1000);
+}
         async function updateStatus() {
             try {
                 const response = await fetch(`https://api.lanyard.rest/v1/users/${DISCORD_ID}`);
@@ -141,6 +134,7 @@ if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
 </audio>
 </body>
 </html>
+
 
 
 
