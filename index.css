@@ -18,36 +18,7 @@ body {
     overflow: hidden;
     color: #fff;
 }
-/* Ховаємо стандартний курсор */
 
-
-/* ховаємо стандартний курсор */
-
-/* сама точка */
-.cursor-dot {
-    position: fixed;
-    width: 8px;
-    height: 8px;
-    background: white;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 100000;
-    transform: translate(-50%, -50%);
-    transition: transform 0.15s ease, background 0.2s ease;
-}
-
-/* ефект при наведенні */
-.cursor-dot.hover {
-    transform: translate(-50%, -50%) scale(1.8);
-    background: #ffffff;
-}
-
-@keyframes fadeOut {
-    to {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.5);
-    }
-}
 /* ============================= */
 /* OVERLAY */
 /* ============================= */
@@ -236,6 +207,7 @@ body {
         display: none !important;
     }
 }
+
 
 
 
