@@ -62,7 +62,33 @@
 
         </div>
     </div>
-   
+    <script>
+   function startSite() {
+    const overlay = document.getElementById("overlay");
+    const music = document.getElementById("bg-music");
+
+    overlay.classList.add("overlay-hidden");
+
+    music.volume = 0;
+    music.play().then(() => {
+        let vol = 0;
+        const fade = setInterval(() => {
+            if (vol < 0.4) {
+                vol += 0.02;
+                music.volume = vol;
+            } else {
+                clearInterval(fade);
+            }
+        }, 100);
+    }).catch(err => {
+        console.log("Autoplay blocked:", err);
+    });
+
+    setTimeout(() => {
+        overlay.style.display = "none";
+    }, 1000);
+}
+    </script>
 <script>
 
 if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
@@ -135,6 +161,7 @@ if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
 
 </body>
 </html>
+
 
 
 
