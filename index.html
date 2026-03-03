@@ -41,6 +41,9 @@
             </h1>
 
             <p class="bio">沉默久了，连解释都显得多余。</p>
+
+            <p id="discord-status">Loading status...</p>
+            
             <!-- SOCIALS -->
             <div class="socials">
     <a href="https://www.instagram.com/gritsishin_roman/" target="_blank">
@@ -72,8 +75,35 @@ function startSite() {
 }
 </script>
 
+    <script>
+async function updateDiscord() {
+    try {
+        const res = await fetch("https://api.lanyard.rest/v1/users/950441249700188171");
+        const data = await res.json();
+        const status = data.data.discord_status;
+        const el = document.getElementById("discord-status");
+
+        if (status === "online") {
+            el.textContent = "🟢 Online";
+        } else if (status === "idle") {
+            el.textContent = "🌙 Idle";
+        } else if (status === "dnd") {
+            el.textContent = "⛔ Do Not Disturb";
+        } else {
+            el.textContent = "⚫ Offline";
+        }
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+updateDiscord();
+setInterval(updateDiscord, 15000);
+</script>
+
    </body>
 </html>
+
 
 
 
