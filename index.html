@@ -109,58 +109,9 @@ if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
 }
   
 </script>
-
-    <script>
-        const DISCORD_ID = "950441249700188171";
-
-       function startSite() {
-    const overlay = document.getElementById("overlay");
-    const music = document.getElementById("bg-music");
-
-    overlay.classList.add("overlay-hidden");
-
-    music.volume = 0.4; // 40% гучності
-    music.play().catch(err => console.log("Music blocked:", err));
-
-    setTimeout(() => {
-        overlay.style.display = "none";
-    }, 1000);
-}
-        async function updateStatus() {
-            try {
-                const response = await fetch(`https://api.lanyard.rest/v1/users/${DISCORD_ID}`);
-                const data = await response.json();
-
-                if (data.success) {
-                    const { discord_status } = data.data;
-                    const dot = document.getElementById("status-dot");
-                    const statusText = document.getElementById("discord-status");
-
-                    const colors = {
-                        online: "#43b581",
-                        idle: "#faa61a",
-                        dnd: "#f04747",
-                        offline: "#747f8d"
-                    };
-
-                    dot.style.backgroundColor = colors[discord_status] || colors.offline;
-
-                    statusText.innerText =
-                        discord_status === "offline"
-                        ? "Не в мережі"
-                        : "В мережі";
-                }
-            } catch {
-                console.log("Discord error");
-            }
-        }
-
-        updateStatus();
-        setInterval(updateStatus, 15000);
-    </script>
-
-</body>
+   </body>
 </html>
+
 
 
 
