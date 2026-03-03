@@ -42,7 +42,41 @@
 
             <p class="bio">沉默久了，连解释都显得多余。</p>
 
-            <p id="discord-status">Loading status...</p>
+                   <div class="discord-card">
+                <div class="avatar-box">
+                    <img src="1000039243.jpg" class="avatar" alt="Discord">
+                    <div class="status-dot" id="status-dot"></div>
+                </div>
+                <div class="user-info">
+                    <div class="top-row">
+                        <span class="username">𒉭</span>
+                        <span class="badge">CODE</span>
+                    </div>
+                    <p class="discord-status" id="discord-status">Завантаження...</p>
+                </div>
+            </div>
+
+            <script>
+               async function updateStatus() {
+            try {
+                const response = await fetch(`https://api.lanyard.rest/v1/users/${DISCORD_ID}`);
+                const data = await response.json();
+                if (data.success) {
+                    const { discord_status, activities } = data.data;
+                    const statusText = document.getElementById('discord-status');
+                    const dot = document.getElementById('status-dot');
+                    const colors = { online: '#43b581', idle: '#faa61a', dnd: '#f04747', offline: '#747f8d' };
+                    dot.style.backgroundColor = colors[discord_status] || colors.offline;
+                    
+                    if (activities && activities.length > 0) {
+                        statusText.innerText = activities[0].state || activities[0].details || "В мережі";
+                    } else {
+                        statusText.innerText = discord_status === 'offline' ? 'Не в мережі' : 'В мережі';
+                    }
+                }
+            } catch (e) { console.error("Discord error"); }
+        }
+            </script>
             
             <!-- SOCIALS -->
             <div class="socials">
@@ -74,35 +108,9 @@ function startSite() {
     music.play().catch(e => console.log("Play error:", e));
 }
 </script>
-
-    <script>
-async function updateDiscord() {
-    try {
-        const res = await fetch("https://api.lanyard.rest/v1/users/950441249700188171");
-        const data = await res.json();
-        const status = data.data.discord_status;
-        const el = document.getElementById("discord-status");
-
-        if (status === "online") {
-            el.textContent = "🟢 Online";
-        } else if (status === "idle") {
-            el.textContent = "🌙 Idle";
-        } else if (status === "dnd") {
-            el.textContent = "⛔ Do Not Disturb";
-        } else {
-            el.textContent = "⚫ Offline";
-        }
-    } catch (err) {
-        console.log(err);
-    }
-}
-
-updateDiscord();
-setInterval(updateDiscord, 15000);
-</script>
-
    </body>
 </html>
+
 
 
 
