@@ -194,19 +194,8 @@ body {
 }
 
 
-/* Ховаємо стандартний курсор ТІЛЬКИ на ПК */
-@media (hover: hover) and (pointer: fine) {
-    * {
-        cursor: none !important;
-    }
-}
 
-/* На телефоні повністю прибираємо кастомну точку */
-@media (hover: none) and (pointer: coarse) {
-    .cursor-dot {
-        display: none !important;
-    }
-}
+
 
 
 
