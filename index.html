@@ -89,28 +89,10 @@
     }, 1000);
 }
     </script>
-<script>
 
-if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-
-    const dot = document.createElement("div");
-    dot.classList.add("cursor-dot");
-    document.body.appendChild(dot);
-
-    document.addEventListener('mousemove', (e) => {
-        dot.style.left = e.clientX + "px";
-        dot.style.top = e.clientY + "px";
-    });
-
-    document.querySelectorAll("a").forEach(el => {
-        el.addEventListener("mouseenter", () => dot.classList.add("hover"));
-        el.addEventListener("mouseleave", () => dot.classList.remove("hover"));
-    });
-}
-  
-</script>
    </body>
 </html>
+
 
 
 
